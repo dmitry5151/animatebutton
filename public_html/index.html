@@ -36,12 +36,13 @@ and open the template in the editor.
                     <button type="button" class="btn btn-primary">Primary</button>
 
                     <!-- Рабочая версия -->
-                    <div class="btn" style="padding: 0; position: relative">
-                        <button  type="button" class="btn btn-default progress-button" ng-click="animate(); $event.stopPropagation()" >
-                            <span class="glyphicon glyphicon-remove-sign" ng-hide="wait.active"></span>
-                            <span ng-show="wait.active">{{wait.timer}}</span>
+                    <div class="btn progress-wrapper" style=""><!-- Базовая обертка -->
+                        <div class="btn progress-counter" ng-show="wait.active">{{wait.timer}}</div>
+                        <div class="shutter" ng-style="styles.shutter"></div>
+                        <!-- Кнопка с фоном, границей и крестиком -->
+                        <button  type="button" class="btn btn-success progress-button" ng-click="animate(); $event.stopPropagation()" ng-style="styles.progressButton" >
+                            <span class="glyphicon glyphicon-remove-sign" ng-class="wait.transparent"></span>
                         </button>
-                        <div class="progress-slider"></div>
                     </div>
 
 

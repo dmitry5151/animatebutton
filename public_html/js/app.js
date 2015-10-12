@@ -4,22 +4,33 @@ var defferredActions;
 defferredActions = angular.module('defferredActions', []);
 
 defferredActions.controller('waitTimer', function($scope, $timeout) {
+  var butWidth, timerValue;
   $scope.app = "Приложение работает!";
   $scope.wait = {};
   $scope.wait.active = false;
-  $scope.wait.timerVal = 5;
   $scope.intID = 0;
   $scope.pr = 0;
+  timerValue = 5;
+  butWidth = 40;
+  $scope.styles = {
+    "progressButton": {
+      "width": butWidth + "px"
+    },
+    "shutter": {
+      "left": butWidth + "px"
+    }
+  };
   $scope.animate = function() {
     var c, myTimer;
     if ($scope.wait.active) {
       $scope.wait.active = false;
       $timeout.cancel($scope.pr);
     } else {
-      $scope.wait.timer = $scope.wait.timerVal = 5;
+      $scope.wait.timer = timerValue;
       $scope.wait.active = true;
+      $scope.wait.transparent = "transparent";
       $scope.app = "Таймер запущен";
-      c = $scope.wait.timerVal;
+      c = timerValue;
       myTimer = function() {
         if (c === 0) {
           console.log("Время вышло!");
@@ -33,8 +44,5 @@ defferredActions.controller('waitTimer', function($scope, $timeout) {
       };
       myTimer();
     }
-  };
-  $scope.setTime = function(t) {
-    $scope.wait.timer = t;
   };
 });

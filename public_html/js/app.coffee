@@ -4,11 +4,25 @@ defferredActions.controller 'waitTimer', ($scope, $timeout) ->
   $scope.app = "Приложение работает!"
   $scope.wait = {}
   $scope.wait.active = false
-  $scope.wait.timerVal = 5
+  #$scope.wait.timerVal = 5
 
   $scope.intID = 0 # id таймера
   $scope.pr = 0
   #$scope.wait.width = angular.element('#wt-base').width()
+
+  # Настройки приложения
+
+  timerValue = 5 # Время ожидания, оно же время на анимацию кнопки
+
+  # Настраиваемые стили приложения
+
+  butWidth = 40
+  $scope.styles =
+    "progressButton":
+      "width": "#{butWidth}px"
+    "shutter":
+      "left": "#{butWidth}px"
+
 
   # Анимация кнопки
 
@@ -18,12 +32,13 @@ defferredActions.controller 'waitTimer', ($scope, $timeout) ->
       $scope.wait.active = false
       $timeout.cancel $scope.pr
       #clearInterval $scope.intID
-    else
-      $scope.wait.timer = $scope.wait.timerVal = 5
+    else # изначально false
+      $scope.wait.timer = timerValue
       $scope.wait.active = true
+      $scope.wait.transparent = "transparent"
       $scope.app = "Таймер запущен"
 
-      c = $scope.wait.timerVal
+      c = timerValue
 
       myTimer = ->
 
@@ -43,9 +58,6 @@ defferredActions.controller 'waitTimer', ($scope, $timeout) ->
 
     return
 
-  $scope.setTime = (t) ->
-    $scope.wait.timer = t
-    return
 
 
   return

@@ -1,3 +1,35 @@
+.progress-counter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent !important;
+    border-color: #4cae4c !important;
+    color: #333;
+    z-index: 3;
+    &:focus, &:hover {
+        border-color: #255625 !important;
+    }
+}
+.progress-wrapper {
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+.shutter {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    //left: 100%;
+    width: 100px;
+    background-color: #fff;
+    z-index: 2;
+}
+.transparent {
+    color: transparent;
+    background: transparent;
+}
 .progress-slider {
     position: absolute;
     top: 0;
@@ -11,8 +43,8 @@
     z-index: 0;
 }
 .progress-button {
-    width: 40px;
-    background-color: transparent !important;
+    //width: 40px; // Изменяемый параметр для настройки (см angular и стиль в html файле)
+    //background-color: transparent !important;
     position: relative;
     z-index: 1;
 }
