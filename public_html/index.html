@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="defferredActions">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <!-- временные скрипты -->
+        <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+        <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+    </head>
+    <body ng-controller="waitTimer">
+        <div class="container-fluid">
+            <div class="row" style="margin: 30px 0">
+                <div class="col-md-6">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                          {{app}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Standard button -->
+                    <button type="button" class="btn btn-default">Default</button>
+
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <button type="button" class="btn btn-primary">Primary</button>
+
+                    <!-- Рабочая версия -->
+                    <div class="btn" style="padding: 0; position: relative">
+                        <button  type="button" class="btn btn-default progress-button" ng-click="animate(); $event.stopPropagation()" >
+                            <span class="glyphicon glyphicon-remove-sign" ng-hide="wait.active"></span>
+                            <span ng-show="wait.active">{{wait.timer}}</span>
+                        </button>
+                        <div class="progress-slider"></div>
+                    </div>
+
+
+                    <!-- Contextual button for informational alert messages -->
+                    <button type="button" class="btn btn-info">Info</button>
+
+                    <!-- Indicates caution should be taken with this action -->
+                    <button type="button" class="btn btn-warning">Warning</button>
+
+                    <!-- Indicates a dangerous or potentially negative action -->
+                    <button type="button" class="btn btn-danger">Danger</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
